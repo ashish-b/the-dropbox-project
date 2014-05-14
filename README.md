@@ -13,3 +13,4 @@ the-dropbox-project
 * Run this as a chron job, later on can be run as android app
 * Export songs from a playlist
 * Add popularity information based on eg. youtube views to songs
+* Build database of all the songs on a song website like songs.pk - which can be used as a reference later on
