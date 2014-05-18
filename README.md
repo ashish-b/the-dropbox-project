@@ -14,3 +14,4 @@ the-dropbox-project
 * Export songs from a playlist
 * Add popularity information based on eg. youtube views to songs
 * Build database of all the songs on a song website like songs.pk - which can be used as a reference later on
+* Use scrapy for web crawling
