@@ -6,6 +6,7 @@
 from scrapy.item import Item, Field
 
 class CrawlerSongsPkItem(Item):
+    movie_url = Field()
     movie_name = Field()
     songs = Field()
 
