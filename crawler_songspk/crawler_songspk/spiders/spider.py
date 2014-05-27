@@ -1,5 +1,4 @@
 from scrapy.spider import Spider
-from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 from scrapy.selector import Selector
 from scrapy.http import Request
 from ..items import CrawlerSongsPkItem
