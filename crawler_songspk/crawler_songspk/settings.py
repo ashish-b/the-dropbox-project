@@ -10,6 +10,7 @@ BOT_NAME = 'crawler_songspk'
 
 SPIDER_MODULES = ['crawler_songspk.spiders']
 NEWSPIDER_MODULE = 'crawler_songspk.spiders'
+ITEM_PIPELINES = { 'crawler_songspk.pipelines.CrawlerSongspkPipeline' : 0}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawler_songspk (+http://www.yourdomain.com)'

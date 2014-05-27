@@ -43,7 +43,7 @@ class SongsPkSpider(Spider):
         if yield_value:
             yield_value = False
             value = CrawlerSongsPkItem()
-            value["movie_url"] = response.request.url
+            value["movie_url"] = self._sanitize_the_url(response.request.url)
             value["movie_name"] = self._process_movie_name(sel.xpath("//title/text()").extract()[0])
             value["songs"] = song_info
             yield value
@@ -57,19 +57,16 @@ class SongsPkSpider(Spider):
         if yield_value:
             yield_value = False
             value = CrawlerSongsPkItem()
-            value["movie_url"] = response.request.url
+            value["movie_url"] = self._sanitize_the_url(response.request.url)
             value["movie_name"] = self._process_movie_name(sel.xpath("//title/text()").extract()[0])
             value["songs"] = items
             yield value
-
-    def _process_song_name2(self, sub_selector, data_version):
-            return sub_selector.xpath("@href").extract()[0], sub_selector.xpath("text()").extract()[0].strip()
 
     def _process_song_name(self, sub_selector, data_version):
         url = None
         name = None
         try:
-            url = sub_selector.xpath("@href").extract()[0]
+            url = self._sanitize_the_url(sub_selector.xpath("@href").extract()[0])
             name = sub_selector.xpath("text()").extract()[0].strip()
         except IndexError as IE:
             print IE
@@ -94,3 +91,6 @@ class SongsPkSpider(Spider):
                 break
         best_possible_movie_name = splits[i:]
         return " ".join(reversed(best_possible_movie_name)).lower()
+
+    def _sanitize_the_url(self, url):
+        return url.replace(".", "*")
